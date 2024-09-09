@@ -2,7 +2,6 @@ use rand::Rng;
 
 pub mod divide_et_impera;
 
-
 pub fn randomize_array(arr : &mut [i32]){
     let len = arr.len();
     for x in 0..len{
@@ -15,6 +14,21 @@ pub fn randomize_vec(vector: &mut Vec<i32>){
     for x in 0..len{
         vector[x] = rand::thread_rng().gen_range(0..100);
     }
+}
+
+// Generic type in function + traits
+pub fn check_array_if_sorted<T: std::cmp::PartialOrd>(arr: &mut [T]) -> bool {
+    for i in 0..(arr.len() - 1) {
+        if arr[i] > arr[i + 1] {return false;}
+    }
+    true
+}
+
+pub fn check_vec_if_sorted<T: std::cmp::PartialOrd>(vector: &mut Vec<T>) -> bool {
+    for i in 0..(vector.len() - 1) {
+        if vector[i] > vector[i + 1] {return false;}
+    }
+    true
 }
 
 /*
