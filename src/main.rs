@@ -40,6 +40,7 @@ impl User {
     }
 
     fn user_create(id: u64, name: String, ban: bool) -> User{
+        if id == 0 {panic!("IDs can't be 0")};
         User {
             id, // Line id: id can be skipped thanks to field init shorthand
             name,
